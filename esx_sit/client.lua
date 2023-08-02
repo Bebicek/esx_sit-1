@@ -1,14 +1,9 @@
-ESX = nil
+ESX = exports["es_extended"]:getSharedObject()
+
 local debugProps, sitting, lastPos, currentSitCoords, currentScenario = {}
 local disableControls = false
 local currentObj = nil
 
-Citizen.CreateThread(function()
-	while ESX == nil do
-		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
-		Citizen.Wait(0)
-	end
-end)
 
 if Config.Debug then
 	Citizen.CreateThread(function()
@@ -71,22 +66,21 @@ Citizen.CreateThread(function()
 		table.insert(Sitables, model)
 	end
 	Wait(100)
-	exports['bt-target']:AddTargetModel(Sitables, {
-        options = {
-            {
-                event = "Boost-Sit:Sit",
-                icon = "fas fa-chair",
-                label = "Atsisesti",
-            },
-        },
-        job = {"all"},
-        distance = Config.MaxDistance
-    })
+	exports.ox_target:addModel(Sitables, {
+		{
+			event = 'Boost-Sit:Sit',
+			icon = "fas fa-chair",
+			label = "Posadit se",
+			job = {"all"},
+			distance = Config.MaxDistance
+		}
+	})
+	
 end)
 
 RegisterNetEvent("Boost-Sit:Sit")
 AddEventHandler("Boost-Sit:Sit", function()
-	print("Nu suveikiau")
+	print("bebiknatopu")
 	local playerPed = PlayerPedId()
 
 	if sitting and not IsPedUsingScenario(playerPed, currentScenario) then
