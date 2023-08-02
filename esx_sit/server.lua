@@ -1,7 +1,6 @@
-ESX = nil
-local seatsTaken = {}
+ESX = exports["es_extended"]:getSharedObject()
 
-TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+local seatsTaken = {}
 
 RegisterNetEvent('esx_sit:takePlace')
 AddEventHandler('esx_sit:takePlace', function(objectCoords)
