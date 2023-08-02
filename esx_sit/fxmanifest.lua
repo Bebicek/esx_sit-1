@@ -4,6 +4,8 @@ game 'gta5'
 author 'Boost#0787 Modified'
 description 'ESX Sit'
 
+shared_script '@es_extended/imports.lua'
+
 version '1.0.3'
 
 server_scripts {
@@ -20,5 +22,5 @@ client_scripts {
 
 dependencies { 
   'PolyZone', 
-  'bt-target' 
+  'ox_target' 
 }
